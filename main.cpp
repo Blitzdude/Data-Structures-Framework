@@ -1,4 +1,5 @@
 #include <iostream>
+#include <d3d9.h>
 #include "Window.h"
 #include "Game.h"
 #include "Timer.h"
@@ -9,7 +10,7 @@ HANDLE consoleHandle;
 HWND windowHandle;
 
 Timer deltaTimer; // In-game Timer object
-Game game; //
+Game game; // game-manager object
 
 int main()
 {
@@ -27,16 +28,22 @@ int main()
 	{
 		memcpy( Input::keysPreviousFrame, Input::keys, 256 );
 		
+		// Check to see if any messages are waiting in the queue
 		PeekMessage( &msg, NULL, NULL, NULL, PM_REMOVE );
 
+		// if next message is quit, exit while-loop
 		if( msg.message == WM_QUIT )
 		{
 			break;
 		}
-
+		
+		// Translate keystroke messages into the right format
 		TranslateMessage( &msg );
+
+		// Send the message to the WindowProc function
 		DispatchMessage( &msg );
 
+		// Run game code here
 		double dt = deltaTimer.GetDuration();
 		game.Update(dt);
 		deltaTimer.Start();

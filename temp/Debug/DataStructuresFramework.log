@@ -1,12 +1,10 @@
 ﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(367,5): warning MSB8004: Intermediate Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Intermediate Directory.
 C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(368,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
   main.cpp
-c:\users\joelkan\downloads\datastructuresframework\window.h(37): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-c:\users\joelkan\downloads\datastructuresframework\window.h(62): warning C4996: 'freopen': This function or variable may be unsafe. Consider using freopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\users\joel\desktop\projektit\data-structures-framework\window.h(39): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\joel\desktop\projektit\data-structures-framework\window.h(64): warning C4996: 'freopen': This function or variable may be unsafe. Consider using freopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(240): note: see declaration of 'freopen'
-c:\users\joelkan\downloads\datastructuresframework\window.h(63): warning C4996: 'freopen': This function or variable may be unsafe. Consider using freopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\users\joel\desktop\projektit\data-structures-framework\window.h(65): warning C4996: 'freopen': This function or variable may be unsafe. Consider using freopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(240): note: see declaration of 'freopen'
-  Game.cpp
-  Generating Code...
-  DataStructuresFramework.vcxproj -> C:\Users\joelkan\Downloads\DataStructuresFramework\bin/Debug\DataStructuresFramework.exe
-  DataStructuresFramework.vcxproj -> C:\Users\joelkan\Downloads\DataStructuresFramework\bin/Debug\DataStructuresFramework.pdb (Partial PDB)
+  DataStructuresFramework.vcxproj -> C:\Users\Joel\Desktop\projektit\Data-Structures-Framework\bin/Debug\DataStructuresFramework.exe
+  DataStructuresFramework.vcxproj -> C:\Users\Joel\Desktop\projektit\Data-Structures-Framework\bin/Debug\DataStructuresFramework.pdb (Partial PDB)

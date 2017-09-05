@@ -46,12 +46,12 @@ void Game::Update(double dt)
 	}
 	else if (Input::KeyPressed( ( int )'D' ) )
 	{
-		cout << "D Key pressed" << endl;
+		cout << "D Key pressed lslslsslslsls" << endl;
 	}
 
 	if( Input::KeyHeldDown( VK_RETURN ) )
 	{
-		cout << "button held down" << endl;
+		cout << "Enter button held down" << endl;
 	}
 
 	if( Input::KeyReleased( ( int )'Q' ) )

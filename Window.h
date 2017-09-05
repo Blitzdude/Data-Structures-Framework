@@ -7,12 +7,14 @@
 #include "Input.h"
 
 std::wstring textToScreen = _T("not set");
+
+// This is the main message handler for the program
 LRESULT CALLBACK WindowProc( HWND	hwnd,
 							 UINT	uMsg,
 							 WPARAM	wParam,
 							 LPARAM lParam )
 {
-
+	// sort through the message?
 	switch( uMsg )
 	{
 	case WM_CLOSE:
@@ -75,6 +77,7 @@ std::wstring *GetScreenText()
 
 void InitWindow( int width, int height, HWND *outWindowHandle )
 {
+	// fill in the struct with the needed information
 	HINSTANCE hInstance		= GetModuleHandle( NULL );
 	WNDCLASSEX windowClass	={};
 	windowClass.cbSize		= sizeof( WNDCLASSEX );
@@ -84,20 +87,23 @@ void InitWindow( int width, int height, HWND *outWindowHandle )
 	windowClass.lpszClassName = _T("VulkanWindowClass");
 	
 	windowClass.lpszMenuName = MAKEINTRESOURCE( IDR_MENU1 );
+
+	// Register the window class
 	RegisterClassEx( &windowClass );
 
+	// Create the window and use the result as the handle
 	*outWindowHandle = CreateWindowEx
 	(
 		NULL,
-		L"VulkanWindowClass",
-		L"Hello Vulkan",
-		WS_OVERLAPPEDWINDOW | WS_VISIBLE,
-		100, 100,
-		width, height,
-		NULL,
-		NULL,
-		hInstance,
-		NULL
+		L"VulkanWindowClass",	// name of the window class
+		L"Hello Vulkan",		// Title of the windows
+		WS_OVERLAPPEDWINDOW | WS_VISIBLE, // windowstyle and visible
+		100, 100,				// x and y-positions of the window
+		width, height,			// width and height of the window
+		NULL,					// No Parent window
+		NULL,					// We are not using menues
+		hInstance,				// application handle
+		NULL					// used with multiple windows, NULL
 	);
 
 	if( *outWindowHandle == NULL )
