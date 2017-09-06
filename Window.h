@@ -14,11 +14,11 @@ LRESULT CALLBACK WindowProc( HWND	hwnd,
 							 WPARAM	wParam,
 							 LPARAM lParam )
 {
-	// sort through the message?
+	// sort through the messages
 	switch( uMsg )
 	{
 	case WM_CLOSE:
-		MessageBox( hwnd, textToScreen.c_str(), _T( "Closing" ), MB_OK );
+		MessageBox( hwnd, textToScreen.c_str(), _T( "Closing - Goodbye cruel world" ), MB_OK );
 		PostQuitMessage( 0 );
 		break;
 	case WM_COMMAND:
@@ -89,7 +89,11 @@ void InitWindow( int width, int height, HWND *outWindowHandle )
 	windowClass.lpszMenuName = MAKEINTRESOURCE( IDR_MENU1 );
 
 	// Register the window class
-	RegisterClassEx( &windowClass );
+	if (!RegisterClassEx(&windowClass)) 
+	{
+		MessageBox(NULL, _T("Window registeration failed"), _T("Error!"),
+			MB_ICONEXCLAMATION | MB_OK);
+	}
 
 	// Create the window and use the result as the handle
 	*outWindowHandle = CreateWindowEx
