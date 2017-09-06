@@ -161,6 +161,9 @@
   <ItemGroup>
     <ResourceCompile Include="DataStructuresFramework.rc" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="dude.bmp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

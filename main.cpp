@@ -44,6 +44,9 @@ int main()
 		DispatchMessage( &msg );
 
 		// Run game code here
+		//...
+		//...
+
 		double dt = deltaTimer.GetDuration();
 		game.Update(dt);
 		deltaTimer.Start();

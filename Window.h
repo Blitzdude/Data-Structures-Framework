@@ -7,6 +7,8 @@
 #include "Input.h"
 
 std::wstring textToScreen = _T("not set");
+HBITMAP g_bmp;
+
 
 // This is the main message handler for the program
 LRESULT CALLBACK WindowProc( HWND	hwnd,
@@ -14,9 +16,14 @@ LRESULT CALLBACK WindowProc( HWND	hwnd,
 							 WPARAM	wParam,
 							 LPARAM lParam )
 {
+	PAINTSTRUCT ps;
+	HDC hDC;
+		
+
 	// sort through the messages
 	switch( uMsg )
 	{
+	
 	case WM_CLOSE:
 		MessageBox( hwnd, textToScreen.c_str(), _T( "Closing - Goodbye cruel world" ), MB_OK );
 		PostQuitMessage( 0 );
@@ -31,13 +38,21 @@ LRESULT CALLBACK WindowProc( HWND	hwnd,
 		break;
 	case WM_PAINT:
 	{
-		PAINTSTRUCT ps;
-		HDC hDC;
+
 		char szBuffer[]="Hello, World!";
 		hDC=BeginPaint( hwnd, &ps );
 
-		TextOut( hDC, 10, 10, textToScreen.c_str(), textToScreen.length());
-		EndPaint( hwnd, &ps );
+		BITMAP bm;
+		HDC memhDC = CreateCompatibleDC(hDC);
+		HBITMAP hbmld = (HBITMAP)SelectObject(memhDC, g_bmp);
+			
+		GetObject(g_bmp, sizeof(bm), &bm);
+		BitBlt(hDC, 100, 100, bm.bmWidth, bm.bmHeight, memhDC, 0, 0, SRCCOPY);
+		TextOut(hDC, 40, 10, textToScreen.c_str(), textToScreen.length());
+		SelectObject(memhDC, hbmld);
+		DeleteDC(memhDC);
+
+
 	}
 		break;
 	case WM_KEYDOWN:
@@ -80,6 +95,8 @@ void InitWindow( int width, int height, HWND *outWindowHandle )
 	// fill in the struct with the needed information
 	HINSTANCE hInstance		= GetModuleHandle( NULL );
 	WNDCLASSEX windowClass	={};
+	
+
 	windowClass.cbSize		= sizeof( WNDCLASSEX );
 	windowClass.style		= CS_OWNDC | CS_VREDRAW | CS_HREDRAW;
 	windowClass.lpfnWndProc = WindowProc;
@@ -109,6 +126,14 @@ void InitWindow( int width, int height, HWND *outWindowHandle )
 		hInstance,				// application handle
 		NULL					// used with multiple windows, NULL
 	);
+
+	g_bmp = LoadBitmap(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP2));
+	if (g_bmp == NULL)
+	{
+		MessageBox(*outWindowHandle, _T("Could not load IDB_BITMAP2"), _T("Error"),
+			MB_OK | MB_ICONEXCLAMATION);
+
+	}
 
 	if( *outWindowHandle == NULL )
 	{
