@@ -7,7 +7,8 @@
 #include "Input.h"
 
 std::wstring textToScreen = _T("not set");
-HBITMAP g_bmp;
+HBITMAP g_dude;
+HBITMAP g_blimp;
 
 
 // This is the main message handler for the program
@@ -39,16 +40,19 @@ LRESULT CALLBACK WindowProc( HWND	hwnd,
 	case WM_PAINT:
 	{
 
-		char szBuffer[]="Hello, World!";
 		hDC=BeginPaint( hwnd, &ps );
 
 		BITMAP bm;
 		HDC memhDC = CreateCompatibleDC(hDC);
-		HBITMAP hbmld = (HBITMAP)SelectObject(memhDC, g_bmp);
+		HBITMAP hbmld = (HBITMAP)SelectObject(memhDC, g_dude);
 			
-		GetObject(g_bmp, sizeof(bm), &bm);
-		BitBlt(hDC, 100, 100, bm.bmWidth, bm.bmHeight, memhDC, 0, 0, SRCCOPY);
-		TextOut(hDC, 40, 10, textToScreen.c_str(), textToScreen.length());
+		GetObject(g_dude, sizeof(bm), &bm);
+		for (int i = 1; i <= 10; i++) {
+		
+			BitBlt(hDC, 100*i, 100*i, bm.bmWidth, bm.bmHeight, memhDC, 0, 0, SRCCOPY);
+		}
+
+
 		SelectObject(memhDC, hbmld);
 		DeleteDC(memhDC);
 
@@ -127,13 +131,23 @@ void InitWindow( int width, int height, HWND *outWindowHandle )
 		NULL					// used with multiple windows, NULL
 	);
 
-	g_bmp = LoadBitmap(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP2));
-	if (g_bmp == NULL)
+	g_dude = LoadBitmap(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP2));
+	if (g_dude == NULL)
 	{
 		MessageBox(*outWindowHandle, _T("Could not load IDB_BITMAP2"), _T("Error"),
 			MB_OK | MB_ICONEXCLAMATION);
 
 	}
+
+	
+	g_blimp = LoadBitmap(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP3));
+	if (g_blimp == NULL)
+	{
+		MessageBox(*outWindowHandle, _T("Could not load IDB_BLIMP"), _T("Error"),
+			MB_OK | MB_ICONEXCLAMATION);
+	}
+	
+
 
 	if( *outWindowHandle == NULL )
 	{

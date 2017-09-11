@@ -155,13 +155,13 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="Timer.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DataStructuresFramework.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="blimp.bmp" />
     <Image Include="dude.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -32,9 +32,6 @@
     <ClInclude Include="Window.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Timer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="Input.h">
       <Filter>Source Files</Filter>
     </ClInclude>
@@ -49,6 +46,9 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="dude.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="blimp.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
